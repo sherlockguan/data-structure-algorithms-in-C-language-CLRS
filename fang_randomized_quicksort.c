@@ -1,4 +1,5 @@
 #include <stdio.h>
+/* author sherlock guan*/
 //first write the quicksort then modify it to randomized_quicksort is easier to write and think
 /*choose a pivot randomly based on code of quicksort -- randomized quicksort*/
 int partition(int A[], int p, int r);
