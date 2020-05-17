@@ -144,7 +144,7 @@ void insertByTail(struct Node**headNode,int data)//表头是空才改变表头
 	{
 		//先找到表尾, 初始化表尾为表头的值，从前往后找，，顺着单指针
 		struct Node*tailNode = *headNode;
-		while (tailNode != NULL)
+		while (tailNode->next != NULL)
 		{
 			tailNode = tailNode->next;
 		}
