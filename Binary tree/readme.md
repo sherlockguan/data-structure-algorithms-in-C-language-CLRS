@@ -1,5 +1,5 @@
-binary search tree\n
-general binary tree\n
-tree rotation\n
-red_black tree\n
+binary search tree
+general binary tree
+tree rotation
+red_black tree
 B_tree
