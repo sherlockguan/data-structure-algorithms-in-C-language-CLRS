@@ -14,7 +14,7 @@ struct Node*createNode(int data)
 }
 //无头链表头插法插入新的节点会更新头节点的位置，也就改变了该一级指针的指向=》用二级指针的原因
 void insertByHead(struct Node**headNode, int data)
-{   //链表为空时 newnode 为头节点
+{   //链表为空时 headnode 为头节点
 	struct Node* newNode = createNode(data);//插入前先创建节点 不变
 	//链表不为空时，新节点的下一个时原来头节点，头节点更新为新节点 
 	newNode->next = *headNode;//等效于一级指针
