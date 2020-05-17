@@ -120,6 +120,30 @@ void insertNode(LPBST tree, DATA data)
 
 
 }
+LPNODE searchBST(LPBST tree, int first)
+{
+	LPNODE pMove = tree->root;
+	if (pMove == NULL)
+	{
+		return pMove;
+	}
+	else
+	{//写查找一定注意没有找到时循环如何结束
+		while (pMove!=NULL&&pMove->data.first != first)
+		{
+			if (pMove->data.first > first)
+			{
+				pMove = pMove->LChild;
+
+			}
+			else
+			{
+				pMove = pMove->RChild;
+			}
+		}
+		return pMove;
+	}
+}
 int main()
 {
 	LPBST tree = createBST();
@@ -130,6 +154,8 @@ int main()
 	}
 	printf("mid order traversal:\n");
 	midOrder(tree->root);
+	printf("search erik \n");
+	printNode(searchBST(tree, 40));
 	system("pause");
 	return 0;
 }
