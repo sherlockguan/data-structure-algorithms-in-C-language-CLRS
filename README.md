@@ -1,1 +1,1 @@
-# data-structure-algorithms-in-C-language-CLRS
+# I CANNOT EXPRESS HOW MUCH I HATE POINTER
