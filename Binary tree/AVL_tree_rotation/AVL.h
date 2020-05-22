@@ -18,12 +18,14 @@ class AVLTree
         void insert(const T&data);//引用防止临时对象的产生
  private:
  //插入完毕后还要做旋转 所以要找到对应的子树
-        void insertNodeToTree(TreeNode<T>*&root, const T&data);
+        void _insertNodeToTree(TreeNode<T>*&root, const T&data);
         
 }
 
 template<class T>
 void AVLTree<T>::insert(const T&data)
 {
-
+        insertNodeToTree(pRoot,data);
 }
+template<class T>
+void AVLTree<T>::_insertNodeToTree(TreeNode<T>*&root, const T&data)
