@@ -21,7 +21,8 @@ struct TreeNode
 };
 
 template<class T>
-class AVLTree{
+class AVLTree
+{
 
 	TreeNode<T>* pRoot;
 public:
@@ -41,32 +42,59 @@ private:
 	//图三
 	TreeNode<T>*LR(TreeNode<T>*pRoot);
 };
+
+
 template<class T>
-//右旋 对应图1
-TreeNode<T>AVLTree::*RR(TreeNode<T>*pRoot)
+//右旋 对应图1 和左旋 对称 左变右 右变左
+TreeNode<T>* AVLTree<T>::RR(TreeNode<T>* root)
 {
+	//1.记录root的左孩子
+	TreeNode<T>*pTemp = root->pLeft;
+	//2.pTemp的右孩子成为root的左孩子
+	root->pLeft = pTemp->pRight;
+	//3.
+	pTemp->pRight= root;
+	//4.
+	root->height = 1 + ((_getHeight(root->pLeft) > _getHeight(root->pRight)) ? _getHeight(root->pLeft) : _getHeight(root->pRight));
+	//5.
+	return pTemp;
 	
 }
 
 template<class T>
 //左旋对应 图2
-TreeNode<T>AVLTree::*LL(TreeNode<T>*pRoot)
+
+TreeNode<T>*AVLTree<T>::LL(TreeNode<T>*root)
 {
+//1.记录root的右孩子
+	TreeNode<T>*pTemp = root->pRight;
+//2.pTemp的左孩子成为root的右孩子
+	root->pRight = pTemp->pLeft;
+//3.
+	pTemp->pLeft = root;
+//4.
+	root->height = 1 + ((_getHeight(root->pLeft) > _getHeight(root->pRight)) ? _getHeight(root->pLeft) : _getHeight(root->pRight));
+//5.
+	return pTemp;
 
 }
 
 template<class T>
 //右左旋转 对应 图4
-TreeNode<T>AVLTree::*RL(TreeNode<T>*pRoot)
-{
 
+TreeNode<T>*AVLTree<T>::RL(TreeNode<T>*root)
+{
+	root->pRight = RR(root->pRight);//先以root的右孩子为轴右旋转
+	return LL(root);//以根为轴左旋
 }
+
 
 template<class T>
 //图三
-TreeNode<T>AVLTree::*LR(TreeNode<T>*pRoot)
+TreeNode<T>*AVLTree<T>::LR(TreeNode<T>*root)
 {
-
+	root->pLeft = LL(root->pLeft);//先以root的左孩子为轴
+	return RR(root);//以根为轴右旋
 }
 
 template<class T>
